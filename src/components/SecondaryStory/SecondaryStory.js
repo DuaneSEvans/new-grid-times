@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react"
+import styled from "styled-components/macro"
+import { QUERIES } from "../../constants"
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -10,18 +11,24 @@ const SecondaryStory = ({ id, title, image, location, abstract }) => {
         <Abstract>{abstract}</Abstract>
       </Wrapper>
     </a>
-  );
-};
+  )
+}
 
 const Wrapper = styled.article`
   display: grid;
   grid-template-areas:
-    'image heading'
-    'image abstract';
+    "image heading"
+    "image abstract";
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
-`;
+
+  @media (${QUERIES.tabletOnly}) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+`
 
 const Image = styled.img`
   grid-area: image;
@@ -30,7 +37,7 @@ const Image = styled.img`
   height: 120px;
   border-radius: 4px;
   object-fit: cover;
-`;
+`
 
 const Heading = styled.h2`
   grid-area: heading;
@@ -39,12 +46,16 @@ const Heading = styled.h2`
   line-height: 1.3;
   /* Optical alignment */
   margin-top: -2px;
-`;
+`
 
 const Abstract = styled.p`
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
-`;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+`
 
-export default SecondaryStory;
+export default SecondaryStory

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { QUERIES } from '../../constants';
+import React from "react"
+import styled from "styled-components/macro"
+import { COLORS, QUERIES } from "../../constants"
 
 const Advertisement = (props) => {
   return (
@@ -12,15 +12,20 @@ const Advertisement = (props) => {
     */}
       <Box />
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-`;
+
+  @media ${QUERIES.laptopAndUp} {
+    border-top: 1px solid ${COLORS.gray[300]};
+    padding-top: 8px;
+  }
+`
 
 const Prefix = styled.p`
   margin-bottom: 0;
@@ -30,10 +35,10 @@ const Prefix = styled.p`
 
   &::before,
   &::after {
-    content: '—';
+    content: "—";
     margin: 0 8px;
   }
-`;
+`
 
 const Box = styled.div`
   width: 100%;
@@ -43,6 +48,6 @@ const Box = styled.div`
   @media ${QUERIES.tabletAndUp} {
     height: 120px;
   }
-`;
+`
 
-export default Advertisement;
+export default Advertisement
